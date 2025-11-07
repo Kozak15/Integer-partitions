@@ -26,10 +26,10 @@ def count_partitions_max(n, max_part):
         return 1
     if n < 0 or max_part == 0:
         return 0
-    return count_partitions(n, max_part - 1) + count_partitions(n - max_part, max_part - 1)
+    return count_partitions_max(n, max_part - 1) + count_partitions_max(n - max_part, max_part - 1)
 #Partition n into distinct parts (wrapper function)
 def partition_distinct(n):
-    return count_partitions(n,n)
+    return count_partitions_max(n,n)
 #Partition n into odd parts, equivalent to partition into distinct parts    
 def partition_odd_dp(n):
     dp = [0]*(n+1)
@@ -74,5 +74,6 @@ def p(n):
                 count -= p(n - val)
             index += 1
         return count
+
 
 
